@@ -1,5 +1,4 @@
-**EHSAN MARKETING**
-=====================
+
 (SIMPLE INVOICE APP)
 --------------------------------------
 To run this project you have to follow some steps.
@@ -11,7 +10,7 @@ To run this project you have to follow some steps.
 
 
 #### Step No 2. 
->Go to the **demo-projects** folder & inside **demo-projects** directory, run the following commands.
+>Go to the **demo-projects** directory. Inside **demo-projects** create a virtualenv, After activated virtualenv run the following commands.
 
 
 >For install all **Dependencies**  just run : 
@@ -21,7 +20,7 @@ To run this project you have to follow some steps.
 
 > And for the **runserver** just run
 
-> **commands: python manage.py runserver**
+> ** python manage.py runserver**
 
 Technology I use
 -------------------
