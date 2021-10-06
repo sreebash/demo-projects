@@ -16,34 +16,37 @@
 
 <h2 class="alert alert-warning text-center">SIMPLE INVOICE</h2>
 
+<div class="container">
 
-<table class="table container">
-    <thead class="thead-dark">
-    <tr>
-        <th>Envoice ID</th>
-        <th>Staus</th>
-        <th>Due</th>
-
-    </tr>
-    </thead>
-    <tbody>
-    {% for invoice in invoice_list %}
-
+    <table class="table">
+        <thead class="thead-dark">
         <tr>
-
-            <th scope="row">{{ invoice.invoice_no }}</th>
-            <th scope="row">{{ invoice.status }}</th>
-            <th scope="row">{{ invoice.due }}</th>
-            <th scope="row"><a href="">Downloade</a></th>
-
-
+            <th>Envoice ID</th>
+            <th>Staus</th>
+            <th>Due</th>
 
         </tr>
-    {% endfor %}
+        </thead>
+        <tbody>
+        {% for invoice in invoice_list %}
+
+            <tr>
+
+                <th scope="row">{{ invoice.invoice_no }}</th>
+                <th scope="row">{{ invoice.status }}</th>
+                <th scope="row">{{ invoice.due }}</th>
+                <th scope="row"><a href="">Download</a></th>
 
 
-    </tbody>
-</table>
+            </tr>
+        {% endfor %}
+
+
+        </tbody>
+        <a href="{% url 'invoice:invoice' %}">Back to Home</a>
+
+    </table>
+</div>
 
 
 <!-- Optional JavaScript; choose one of the two! -->

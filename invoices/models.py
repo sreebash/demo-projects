@@ -8,7 +8,7 @@ class Invoice(models.Model):
         ('Unpaid', 'Unpaid'),
     ]
     status = models.CharField(choices=choices, max_length=20)
-    due = models.CharField(max_length=200)
+    due = models.PositiveBigIntegerField(max_length=200)
 
     def __str__(self):
         return self.invoice_no
