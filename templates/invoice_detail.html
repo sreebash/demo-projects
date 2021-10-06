@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Invoice Create</title>
+</head>
+<body>
+
+<table>
+    {% for invoice in invoice_list %}
+
+
+        <thead>
+        <tr>
+            <th>Envoice ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Price</th>
+            <th>Paid</th>
+            <th>Unpaid</th>
+            <th>Due</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ invoice.invoice_no }}</td>
+            <td>{{ invoice.name }}</td>
+            <td>{{ invoice.email }}</td>
+            <td>{{ invoice.phone }}</td>
+            <td>{{ invoice.price }}</td>
+            <td>{{ invoice.paid }}</td>
+            <td>{{ invoice.unpaid }}</td>
+            <td>{{ invoice.due }}</td>
+        </tr>
+        </tbody>
+
+    {% endfor %}
+
+</table>
+
+</body>
+</html>
