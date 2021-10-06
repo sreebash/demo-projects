@@ -5,18 +5,24 @@ from invoices.forms import InvoiceForm
 
 
 def invoice(request):
-    form = InvoiceForm()
+    invoice_form = InvoiceForm()
+
     if request.method == 'POST':
-        form = InvoiceForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('invoice_show')
+        invoice_form = InvoiceForm(request.POST or None)
+        if invoice_form.is_valid():
+            invoice_form.save()
+            return redirect('invoice:invoice_show')
         else:
-            form = InvoiceForm()
-    return render(request, 'invoice.html', {'form': form})
+
+            invoice_form = InvoiceForm()
+            context = {
+                'invoice_form': invoice_form,
+            }
+        return render(request, 'invoice.html', context)
+
+    return render(request, 'invoice.html', {'invoice_form': invoice_form})
 
 
 def invoice_show(request):
     invoice_list = Invoice.objects.all()
     return render(request, 'invoice_detail.html', {'invoice_list': invoice_list})
-
