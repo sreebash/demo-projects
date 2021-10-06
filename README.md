@@ -1,7 +1,7 @@
 
 (SIMPLE INVOICE APP)
 --------------------------------------
-To run this project you have to follow some steps.
+To run this project just follow the below steps.
 --------------------------------------------------
 
 
@@ -20,7 +20,7 @@ To run this project you have to follow some steps.
 
 > And for the **runserver** just run
 
-> ** python manage.py runserver**
+**<blockquote>python manage.py runserver**</blockquote>
 
 Technology I use
 -------------------
