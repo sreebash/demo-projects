@@ -14,7 +14,8 @@
 <body>
 
 
-<h2 class="alert alert-warning text-center">SIMPLE INVOICE</h2>
+<h2 class="alert alert-warning text-center">INVOICE # {{ invoice.invoice_no }}</h2>
+<hr>
 
 <div class="container">
 
@@ -28,22 +29,18 @@
         </tr>
         </thead>
         <tbody>
-        {% for invoice in invoice_list %}
 
             <tr>
 
                 <th scope="row">{{ invoice.invoice_no }}</th>
                 <th scope="row">{{ invoice.status }}</th>
                 <th scope="row">{{ invoice.due }}</th>
-                <th scope="row"><a href="{% url 'invoice:invoice_pdf' invoice.pk %}"><button class="btn btn-warning btn-sm">Pdf</button></a></th>
 
 
             </tr>
-        {% endfor %}
 
 
         </tbody>
-        <a href="{% url 'invoice:invoice' %}"><button class="btn btn-warning btn-sm">Home</button></a>
 
     </table>
 </div>
