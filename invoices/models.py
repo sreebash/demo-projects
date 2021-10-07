@@ -8,7 +8,7 @@ class Invoice(models.Model):
         ('Unpaid', 'Unpaid'),
     ]
     status = models.CharField(choices=choices, max_length=20)
-    due = models.PositiveBigIntegerField(max_length=200)
+    due = models.PositiveBigIntegerField()
 
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
