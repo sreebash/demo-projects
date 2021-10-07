@@ -24,6 +24,7 @@
             <th>INVOICE ID</th>
             <th>STATUS</th>
             <th>DUE</th>
+            <th>DATE</th>
 
         </tr>
         </thead>
@@ -35,7 +36,8 @@
                 <th scope="row">{{ invoice.invoice_no }}</th>
                 <th scope="row">{{ invoice.status }}</th>
                 <th scope="row">{{ invoice.due }}</th>
-                <th scope="row"><a href="{% url 'invoice:invoice_pdf' invoice.pk %}"><button class="btn btn-warning btn-sm">Pdf</button></a></th>
+                <th scope="row">{{ invoice.created_on }}</th>
+                <th scope="row"><a href="{% url 'invoice:invoice_pdf' invoice.pk %}"><button class="btn btn-warning btn-sm">Print Invoice</button></a></th>
 
 
             </tr>
