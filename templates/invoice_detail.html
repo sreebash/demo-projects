@@ -1,77 +1,58 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
-
-    <title>Invoice Lists</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
 
-<h2 class="alert alert-warning text-center">INVOICE GENERATE</h2>
-<div class="container">
-    <a href="{% url 'invoice:invoice' %}">
-        <button class="btn btn-warning btn-sm">Home</button>
-    </a>
+{% block title %}
+    Invoice Lists
+{% endblock %}
 
-    <div class="text-end">
-        <a href="{% url 'invoice:invoice_excel' %}">
-            <button class="btn btn-info btn-sm">Export Excel</button>
+
+{% block content %}
+
+
+    <h2 class="alert alert-warning text-center">INVOICE GENERATE</h2>
+    <div class="container">
+        <a href="{% url 'invoice:invoice' %}">
+            <button class="btn btn-outline-dark btn-sm">Home</button>
         </a>
-    </div>
 
-    <table class="table">
-        <thead class="thead-dark">
-        <tr>
-            <th>INVOICE #</th>
-            <th>STATUS</th>
-            <th>DUE</th>
-            <th>DATE</th>
+        <div class="text-end">
+            <a href="{% url 'invoice:invoice_excel' %}">
+                <button class="btn btn-info btn-sm">Export Excel</button>
+            </a>
+        </div>
 
-        </tr>
-        </thead>
-        <tbody>
-        {% for invoice in invoice_list %}
-
+        <table class="table">
+            <thead class="thead-dark">
             <tr>
-
-                <th scope="row">{{ invoice.invoice_no }}</th>
-                <th scope="row">{{ invoice.status }}</th>
-                <th scope="row">{{ invoice.due }}</th>
-                <th scope="row">{{ invoice.created_on }}</th>
-                <th scope="row"><a href="{% url 'invoice:invoice_pdf' invoice.pk %}">
-                    <button class="btn btn-warning btn-sm">Print Invoice</button>
-                </a></th>
-
+                <th>INVOICE #</th>
+                <th>STATUS</th>
+                <th>DUE</th>
+                <th>DATE</th>
 
             </tr>
-        {% endfor %}
+            </thead>
+            <tbody>
+            {% for invoice in invoice_list %}
+
+                <tr>
+
+                    <th scope="row">{{ invoice.invoice_no }}</th>
+                    <th scope="row"><span class="btn btn-warning btn-sm">{{ invoice.status }}</span></th>
+                    <th scope="row">{{ invoice.due }}</th>
+                    <th scope="row">{{ invoice.created_on }}</th>
+                    <th scope="row"><a href="{% url 'invoice:invoice_pdf' invoice.pk %}">
+                        <button class="btn btn-outline-primary btn-sm">Print Invoice</button>
+                    </a></th>
 
 
-        </tbody>
+                </tr>
+            {% endfor %}
 
 
-    </table>
-</div>
+            </tbody>
 
 
-<!-- Optional JavaScript; choose one of the two! -->
+        </table>
+    </div>
 
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
-        crossorigin="anonymous"></script>
-
-<!-- Option 2: Separate Popper and Bootstrap JS -->
-<!--
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js" integrity="sha384-PsUw7Xwds7x08Ew3exXhqzbhuEYmA2xnwc8BuD6SEr+UmEHlX8/MCltYEodzWA4u" crossorigin="anonymous"></script>
--->
-</body>
-</html>
+{% endblock %}

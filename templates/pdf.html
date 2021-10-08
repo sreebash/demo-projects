@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+
+    Invoice Pdf
+
+{% endblock %}
+
+
+{% block content %}
+    <h1 class="text-center"><strong>INVOICE</strong></h1>
+
+    <h2 class="alert alert-warning text-center">INVOICE # {{ invoice.invoice_no }}</h2>
+    <hr>
+
+    <div class="container">
+
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th>INVOICE ID</th>
+                <th>STATUS</th>
+                <th>DUE</th>
+                <th>DATE</th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr>
+
+                <th scope="row">{{ invoice.invoice_no }}</th>
+                <th scope="row">{{ invoice.status }}</th>
+                <th scope="row">{{ invoice.due }}</th>
+                <th scope="row">{{ invoice.invoice_no }}</th>
+                <th scope="row">{{ invoice.status }}</th>
+                <th scope="row">{{ invoice.due }}</th>
+                <th scope="row">{{ invoice.created_on }}</th>
+
+
+            </tr>
+
+
+            </tbody>
+
+        </table>
+        <hr>
+
+    </div>
+
+{% endblock %}

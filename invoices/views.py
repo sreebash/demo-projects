@@ -39,7 +39,7 @@ def show_invoice(request):
 def invoice_render_pdf(request, *args, **kwargs):
     pk = kwargs.get('pk')
     invoice = get_object_or_404(Invoice, pk=pk)
-    template_path = 'pdf2.html'
+    template_path = 'pdf.html'
     context = {
         'invoice': invoice
     }
