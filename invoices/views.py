@@ -1,8 +1,11 @@
+import datetime
+
 from django.shortcuts import render, redirect, get_object_or_404
 
 from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
+import xlwt
 
 from invoices.models import Invoice
 
@@ -53,4 +56,28 @@ def invoice_render_pdf(request, *args, **kwargs):
     # if error then show some funy view
     if pisa_status.err:
         return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
+
+
+def export_excel(request, *args, **kwargs):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename=Expense' + str(datetime.datetime.now()) + '.xls'
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('Expense')
+    row_num = 0
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+    columns = ['INVOICE #', 'STATUS', 'DUE', 'DATE']
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    font_style = xlwt.XFStyle()
+    rows = Invoice.objects.all().values_list('invoice_no', 'status', 'due', 'created_on')
+
+    for row in rows:
+        row_num += 1
+
+        for col_num in range(len(row)):
+            ws.write(row_num, col_num, str(row[col_num]), font_style)
+    wb.save(response)
     return response

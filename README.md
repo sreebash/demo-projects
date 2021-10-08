@@ -1,5 +1,5 @@
 
-(SIMPLE INVOICE APP)
+SIMPLE INVOICE APP
 --------------------------------------
 To run this project just follow the below steps.
 --------------------------------------------------
